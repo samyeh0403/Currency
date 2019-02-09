@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText edNtd;
     private TextView usdResult;
+    private TextView jpyResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,29 +25,34 @@ public class MainActivity extends AppCompatActivity {
     private void findViews(){
         edNtd = findViewById(R.id.ed_ntd);
         usdResult = findViewById(R.id.usdResult);
+        jpyResult = findViewById(R.id.jpyResult);
     }
 
     public void exchange(View view) {
         String dollars = edNtd.getText().toString();
         if(dollars.length() == 0){
             new AlertDialog.Builder(this)
-                    .setTitle("Problem")
-                    .setMessage("Please enter your NTD amount again.")
-                    .setPositiveButton("OK", null)
+                    .setTitle(R.string.problem)
+                    .setMessage(R.string.please_enter_ntd)
+                    .setPositiveButton(R.string.ok, null)
                     .show();
             return;
         }
 
         float ntd = Float.parseFloat(dollars);
         float usd = ntd / 30.9f;
-        Log.d("MainActivity", "USD is " + usd);
-        Toast.makeText(this, "USD is " + usd, Toast.LENGTH_LONG).show();
+        float jpy = ntd / 0.27f;
+        Log.d("MainActivity", getString(R.string.use_is) + usd);
+        Log.d("MainActivity", getString(R.string.jpy_is) + jpy);
+        Toast.makeText(this, getString(R.string.use_is) + usd, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, getString(R.string.jpy_is) + jpy, Toast.LENGTH_LONG).show();
         usdResult.setText(String.valueOf(usd));
+        jpyResult.setText(String.valueOf(jpy));
 
         new AlertDialog.Builder(this)
-                .setTitle("Result")
-                .setMessage("USD is " + usd)
-                .setPositiveButton("OK", null)
+                .setTitle(R.string.result)
+                .setMessage(getString(R.string.use_is) + usd + "\n" + getString(R.string.jpy_is) + jpy)
+                .setPositiveButton(R.string.ok, null)
                 .show();
     }
 }
