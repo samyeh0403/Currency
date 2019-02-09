@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         Button exchangeRate = findViewById(R.id.exchange_rate);
         exchangeRate.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 new AlertDialog.Builder(MainActivity.this)
                         .setTitle(R.string.exchange_rate)
                         .setMessage(getString(R.string.jpy_is) + "0.27" + "\n" +
