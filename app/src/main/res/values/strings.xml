@@ -11,4 +11,5 @@
     <string name="us">US</string>
     <string name="none">None</string>
     <string name="jpy_is">JPY is</string>
+    <string name="exchange_rate">Exchange Rate</string>
 </resources>
